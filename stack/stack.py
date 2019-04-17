@@ -10,7 +10,10 @@ class Stack(object):
     def push(self,value):
         self.items.append(value)
     def pop(self):
-        return self.items.pop()
+        if not isEmpty():
+            return self.items.pop()
+        else:
+            return "No Elements"
     def peek(self):
         return self.items[-1]
     def size(self):
