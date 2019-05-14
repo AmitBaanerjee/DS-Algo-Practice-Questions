@@ -3,6 +3,8 @@
 # cat=act
 # real fun= funeral
 #approach === create a dictionary and check inside that
+
+#SOLUTION
 import sys
 string1="real fun"
 string2="funeral    "
