@@ -7,56 +7,59 @@
 # Given n and p, find and print the minimum number of pages Brie must turn in order to arrive at page p.
 #!/bin/python3
 
+#!/bin/python3
+
 import os
 import sys
 
 def pageCount(n, p):
-    def front():
-        start=1
-        flag="false"
-        frontcount=0
-        if p==start:
-            return 0
-        while flag=="false":
-            start=start+2
-            frontcount+=1
-            if p<=start:
-                flag="true"
-        return frontcount
-    def back():
-        end=n
-        backcount=0
-        if end==p:
-            return 0
-        elif end%2!=0:
-            if p==end:
+    try:
+        def front():
+            start=1
+            flag="false"
+            frontcount=0
+            if p==start:
                 return 0
-            elif p==end-1:
+            while flag=="false":
+                start=start+2
+                frontcount+=1
+                if p<=start:
+                    flag="true"
+            return frontcount
+        def back():
+            end=n
+            backcount=0
+            if end==p:
                 return 0
-            else:
+            elif end%2!=0:
                 flag="false"
                 while flag=="false":
-                    end=end-2
-                    backcount+=1
-                    if p>=end:
+                    if p==end or p==end-1:
                         flag="true"
+                    else:
+                        end=end-2
+                        backcount+=1
                 return backcount
-        elif end%2==0:
-            if p==end:
-                return 0
-            end=end-1
-            backcount+=1
-            flag="false"
-            while flag=="false":
-                if p==end or p ==end-1:
-                    flag="true"
-                end=end-2
-                backcount+=1
-            return backcount
-    frontop=front()
-    backop=back()
-    output=min(frontop,backop)
-    return output
+            elif end%2==0:
+                if end==p:
+                    return 0
+                else:
+                    end=end-1
+                    backcount+=1
+                    flag="false"
+                    while flag=="false":
+                        if p==end or p==end-1:
+                            flag="true"
+                        else:
+                            end=end-2
+                            backcount+=1
+                    return backcount
+        frontop=front()
+        backop=back()
+        output=min(frontop,backop)
+        return output
+    except (ValueError,RuntimeError):
+        return 1
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
