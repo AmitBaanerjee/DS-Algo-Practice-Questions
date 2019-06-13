@@ -1,7 +1,8 @@
-/*Program to convert a base 10 number to a base 2 binary number
+/*Program to convert a base 10 number to a base 2 binary number.
+  Display binary representation of the number in your console.
   Also count the number of consecutive ones which are occurring in the binary representation of the number.
   */
-  
+
 import java.util.Arrays;
 import java.util.Scanner;
 
