@@ -1,6 +1,10 @@
 /*Program to convert a base 10 number to a base 2 binary number.
   Display binary representation of the number in your console.
   Also count the number of consecutive ones which are occurring in the binary representation of the number.
+  EXAMPLE:-
+  Input-7
+  Output:Binary representation is :- 111 
+  	 Number of consecutive 1's are 3
   */
 
 import java.util.Arrays;
