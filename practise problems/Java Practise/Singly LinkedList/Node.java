@@ -1,33 +1,33 @@
 package LinkedList;
-
-public class Node {
+class Node{
 	int data;
-	Node next;
-	
-	public Node(int newData) {
-		data=newData;
-		next=null;
+	Node pointer;
+
+	public Node(int data) {
+		this.data=data;
+		pointer=null;
 	}
-	
-	public Node(int newData,Node newNext) {
-		data=newData;
-		this.next=newNext;
+
+	public Node(int data,Node pointer) {
+		this.data=data;
+		this.pointer=pointer;
 	}
-	
+
 	public int getData() {
 		return data;
 	}
-	
-	public Node getNext() {
-		return next;
+
+	public Node getPointer() {
+		return pointer;
 	}
-	
-	public void setData(int data) {
-		this.data=data;
+
+	public void setData(int newData) {
+		this.data=newData;
 	}
-	
-	public void setNext(Node next) {
-		this.next=next;
+
+	public void setPointer(Node pointer) {
+		this.pointer=pointer;
 	}
-	
+
+
 }
