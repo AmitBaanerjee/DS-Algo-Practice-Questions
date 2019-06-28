@@ -16,7 +16,6 @@ import random
 import re
 import sys
 
-# Complete the findDigits function below.
 def findDigits(n):
     temp=n
     test=0
