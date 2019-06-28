@@ -9,7 +9,6 @@
 # The first line is an integer, , indicating the number of test cases.
 # The t subsequent lines each contain an integer, n.
 
-
 import math
 import os
 import random
@@ -27,11 +26,11 @@ def findDigits(n):
                 counter+=1
         temp=temp//10
     return counter
+
 if __name__ == '__main__':
     fptr = open(os.environ['OUTPUT_PATH'], 'w')
 
     t = int(input())
-
     for t_itr in range(t):
         n = int(input())
 
