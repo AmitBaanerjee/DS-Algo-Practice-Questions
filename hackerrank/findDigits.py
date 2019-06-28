@@ -9,7 +9,6 @@
 # The first line is an integer, , indicating the number of test cases.
 # The t subsequent lines each contain an integer, n.
 
-#!/bin/python3
 
 import math
 import os
