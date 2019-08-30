@@ -1,0 +1,48 @@
+# 530. Minimum Absolute Difference in BST
+#
+# Given a binary search tree with non-negative values, find the minimum absolute difference between values of any two nodes.
+#
+# Example:
+#
+# Input:
+#
+#    1
+#     \
+#      3
+#     /
+#    2
+#
+# Output:
+# 1
+#
+# Explanation:
+# The minimum absolute difference is 1, which is the difference between 2 and 1 (or between 2 and 3).
+
+# Definition for a binary tree node.
+# class TreeNode(object):
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+from collections import deque
+class Solution(object):
+    def getMinimumDifference(self, root):
+        """
+        :type root: TreeNode
+        :rtype: int
+        """
+        q=deque()
+        q.append(root)
+        values=[]
+        diff=[]
+        while(q):
+            current=q.popleft()
+            values.append(current.val)
+            if current.left:
+                q.append(current.left)
+            if current.right:
+                q.append(current.right)
+        values.sort()
+        for i in range(0,len(values)-1):
+            diff.append(abs(values[i]-values[i+1]))
+        return min(diff)
