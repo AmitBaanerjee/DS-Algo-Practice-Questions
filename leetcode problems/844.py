@@ -24,26 +24,14 @@
 # Explanation: S becomes "c" while T becomes "b".
 
 class Solution:
-    #use stacks to solve the problem
-    def backspaceCompare(self, s: str, t: str) -> bool:
-        s_stack=[]
-        t_stack=[]
-        for i in s:
-            if i=="#":
-                if len(s_stack)>=1:
-                    item=s_stack.pop()
+    def backspaceCompare(self, S: str, T: str) -> bool:
+        def modify(string):
+            stack=[]
+            for i in string:
+                if i=='#':
+                    if len(stack)>=1:
+                        stack.pop()
                 else:
-                    pass
-            else:
-                s_stack.append(i)
-
-        for i in t:
-            if i=="#":
-                if len(t_stack)>=1:
-                    item=t_stack.pop()
-                else:
-                    pass
-            else:
-                t_stack.append(i)
-
-        return "".join(s_stack)=="".join(t_stack)
+                    stack.append(i)
+            return "".join(stack)
+        return modify(S)==modify(T)
