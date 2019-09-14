@@ -1,0 +1,27 @@
+##aprint all elements
+# arr=[1,2,3,4]
+# def rec(arr):
+#     if arr==[]:
+#         return ""
+#     return str(arr[0])+","+rec(arr[1:])
+# print(rec(arr))
+
+
+##a raised to power b
+# def rec(a,b):
+#     if b==0:
+#         return 1
+#     return a*rec(a,b-1)
+#
+# print(rec(2,3))
+
+##palindrome check
+# def check(input):
+#     if len(input)<=1:
+#         return True
+#     if input[0]==input[len(input)-1]:
+#         return check(input[1:len(input)-1])
+#     else:
+#         return False
+#
+# print(check("civiccv"))
