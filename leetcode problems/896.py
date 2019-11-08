@@ -1,28 +1,59 @@
-896. Monotonic Array
+897. Increasing Order Search Tree
 
-An array is monotonic if it is either monotone increasing or monotone decreasing.
-
-An array A is monotone increasing if for all i <= j, A[i] <= A[j].  An array A is monotone decreasing if for all i <= j, A[i] >= A[j].
-
-Return true if and only if the given array A is monotonic.
+Given a binary search tree, rearrange the tree in in-order so that the leftmost node in the tree is now the root of the tree, and every node has no left child and only 1 right child.
 
 Example 1:
+Input: [5,3,6,2,4,null,8,1,null,null,null,7,9]
 
-Input: [1,2,2,3]
-Output: true
-Example 2:
+       5
+      / \
+    3    6
+   / \    \
+  2   4    8
+ /        / \
+1        7   9
 
-Input: [6,5,4,4]
-Output: true
-Example 3:
+Output: [1,null,2,null,3,null,4,null,5,null,6,null,7,null,8,null,9]
 
-Input: [1,3,2]
-Output: false
-Example 4:
+ 1
+  \
+   2
+    \
+     3
+      \
+       4
+        \
+         5
+          \
+           6
+            \
+             7
+              \
+               8
+                \
+                 9
 
-Input: [1,2,4,5]
-Output: true
-Example 5:
+ # Definition for a binary tree node.
+ # class TreeNode:
+ #     def __init__(self, x):
+ #         self.val = x
+ #         self.left = None
+ #         self.right = None
 
-Input: [1,1,1]
-Output: true
+ class Solution:
+     def increasingBST(self, root: TreeNode) -> TreeNode:
+
+         def inorder(root):
+             if root==None:
+                 return root
+             inorder(root.left)
+             nodes.append(root.val)
+             inorder(root.right)
+         nodes=[]
+         inorder(root)
+         answer=TreeNode(0)
+         temp=answer
+         for i in nodes:
+             temp.right=TreeNode(i)
+             temp=temp.right
+         return answer.right
