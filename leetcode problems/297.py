@@ -1,5 +1,13 @@
 297. Serialize and Deserialize Binary Tree
+Hard
 
+2097
+
+106
+
+Favorite
+
+Share
 Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
 
 Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.
@@ -15,7 +23,9 @@ You may serialize the following tree:
     4   5
 
 as "[1,2,3,null,null,4,5]"
+Clarification: The above format is the same as how LeetCode serializes a binary tree. You do not necessarily need to follow this format, so please be creative and come up with different approaches yourself.
 
+Note: Do not use class member/global/static variables to store states. Your serialize and deserialize algorithms should be stateless.
 
 # Definition for a binary tree node.
 # class TreeNode(object):
@@ -27,33 +37,48 @@ as "[1,2,3,null,null,4,5]"
 class Codec:
 
     def serialize(self, root):
+        """Encodes a tree to a single string.
 
-        def s(root,elements):
+        :type root: TreeNode
+        :rtype: str
+        """
+
+        def s_helper(root,answer):
             if root==None:
-                elements.append("None")
+                answer.append('None')
                 return
-            elements.append(str(root.val))
-            s(root.left,elements)
-            s(root.right,elements)
+            answer.append(str(root.val))
+            s_helper(root.left,answer)
+            s_helper(root.right,answer)
+        answer=[]
+        s_helper(root,answer)
+        return ",".join(answer)
 
-        elements=[]
-        s(root,elements)
-        return ",".join(elements)
 
     def deserialize(self, data):
+        """Decodes your encoded data to tree.
 
-        def d(data):
-            if len(data)==d.idx or data[d.idx]=="None" :
-                d.idx+=1
+        :type data: str
+        :rtype: TreeNode
+        """
+        input=data.split(",")
+        def d_helper(input):
+            if input[0]=='None':
+                input.pop(0)
                 return None
-            root=TreeNode(data[d.idx])
-            d.idx+=1
-            root.left=d(data)
-            root.right=d(data)
+            val=int(input[0])
+            input.pop(0)
+            root=TreeNode(val)
+            root.left=d_helper(input)
+            root.right=d_helper(input)
             return root
-        d.idx=0
-        data_list=data.split(',')
-        return d(data_list)
+
+
+        if input==[]:
+            return None
+        return d_helper(input)
+
+
 # Your Codec object will be instantiated and called as such:
 # codec = Codec()
 # codec.deserialize(codec.serialize(root))
