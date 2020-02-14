@@ -52,3 +52,25 @@ public class MorseCodes {
 	}
 
 }
+
+//APPROACH NUMBER 2 (LESS MEMORY CONSUMING)
+
+class Solution {
+    public int uniqueMorseRepresentations(String[] words) {
+        
+        String [] codes={".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."};
+        int ascii=0;
+        Set<String> hs=new HashSet<String>();
+        for(String word:words){
+            char[] letters=word.toCharArray();
+            StringBuilder sb=new StringBuilder();
+            for(char l:letters){
+                ascii=l;
+                ascii=ascii-97;
+                sb.append(codes[ascii]);
+            }
+            hs.add(sb.toString());
+        }
+        return hs.size();
+    }
+}
