@@ -74,8 +74,6 @@ class Solution {
             if(index==k)
                 break;
         }
-
-        
         return result;
     }
 }
