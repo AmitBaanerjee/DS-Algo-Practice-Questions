@@ -12,6 +12,7 @@
 # Output: [4,5,2,7]
 # Explanation: [4,7,2,5], [2,5,4,7], [2,7,4,5] would also have been accepted.
 #
+#PYTHON SOLUTION #
 class Solution:
     def sortArrayByParityII(self, input: List[int]) -> List[int]:
         evenset,oddset=[],[]
@@ -30,4 +31,35 @@ class Solution:
                 del oddset[0]
         return output
 
+ #JAVA SOLUTION
+class Solution {
+    public int[] sortArrayByParityII(int[] A) {
+        int [] odd= new int[A.length/2];
+        int oddIndex=0;
+        int [] even=new int[A.length/2];
+        int evenIndex=0;
+        for (int i=0;i<A.length;i++){
+            if (A[i]%2==0){
+                even[evenIndex]=A[i];
+                evenIndex++;
+            }
+            else{
+                odd[oddIndex]=A[i];
+                oddIndex++;
+            }
+        }
+        int[] result=new int[A.length];
+        for(int i=0;i<result.length;i++){
+            if(i%2==0){
+                result[i]=even[evenIndex-1];
+                evenIndex--;
+            }
+            else{
+                result[i]=odd[oddIndex-1];
+                oddIndex--;
+            }
+        }
+        return result;
+    }
+}
             
