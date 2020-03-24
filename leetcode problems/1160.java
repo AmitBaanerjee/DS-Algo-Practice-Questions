@@ -62,6 +62,6 @@ class Solution {
             if (flag==true)
                 answer+=word.length();
     }
-         return answer;
-}
+         return answer; 
+  }
 }
