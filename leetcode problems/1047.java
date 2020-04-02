@@ -22,8 +22,6 @@ class Solution {
             if (stack.size()==0 || stack.peek()!=S.charAt(i))
                 stack.push(S.charAt(i));
             else{
-                stack.push(S.charAt(i));
-                stack.pop();
                 stack.pop();
             }
         }
