@@ -17,28 +17,20 @@
 
 class Solution {
     public String removeDuplicates(String S) {
-        Stack<Character> st=new Stack<Character>();
-        char[] c=S.toCharArray();
-        st.push(c[0]);
-        for (int i=1;i<c.length;i++){
-            if (st.size()==0){
-                st.push(c[i]);
-            }
+        Stack<Character> stack=new Stack<Character>();
+        for(int i=0;i<S.length();i++){
+            if (stack.size()==0 || stack.peek()!=S.charAt(i))
+                stack.push(S.charAt(i));
             else{
-                char word1=st.peek();
-                if(word1==c[i]){
-                    char temp=st.pop();
-                }
-                else{
-                    st.push(c[i]);
-                }
+                stack.push(S.charAt(i));
+                stack.pop();
+                stack.pop();
             }
         }
-        String output="";
-        while(!st.isEmpty()){
-            char x=st.pop();
-            output=Character.toString(x)+output;
+        StringBuilder sb=new StringBuilder();
+        while(!stack.isEmpty()){
+            sb.insert(0,Character.toString(stack.pop()));
         }
-        return output;
+        return sb.toString();
     }
 }
